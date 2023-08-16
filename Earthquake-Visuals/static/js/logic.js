@@ -25,7 +25,7 @@ function createMap(earthquakeData) {
 
     // Create the control for the base and overlap map objects
     L.control.layers(baseMap, overlayMap, {
-        collapsed: false
+        collapsed: true
     }).addTo(myMap);
 
     // Add the legend to the map
@@ -40,16 +40,8 @@ d3.json(url).then((data) => {
     createFeatures(data.features);
 });
 
-// Create a function to choose color based on depth level
-// The higher the number, the darker the color
-// function createColor(depth) {
-//     if (depth > -10 && depth <= 10) return "lightgreen";
-//     else if (depth > 10 && depth <= 30) return "greenyellow";
-//     else if (depth > 30 && depth <= 50) return "yellow";
-//     else if (depth > 50 && depth <= 70) return "orange";
-//     else if (depth > 70 && depth <= 90) return "red";
-//     else return "darkred";
-// }
+// Create a createColor function using depth as the argument
+// the higher the depth, the darker the color
 function createColor(depth) {
     return depth > 90 ? '#bd0026' :
            depth <= 90 && depth > 70 ? '#f03b20' :
@@ -108,19 +100,21 @@ function createFeatures(earthquakeData) {
 let legend = L.control({position: 'bottomright'});
 legend.onAdd = function() {
 
+    // Create div for HTML and 'grades' to equal each category box
     let div = L.DomUtil.create('div', 'info legend'),
         grades = [ -10, 10, 30, 50, 70, 90 ];
-        
+    
+    // Loop through each object in 'grades'
     for (let i = 0; i < grades.length; i++) {
 
+        // Add the colors based on each grade vaule and return 'div'
         div.innerHTML +=
             '<i style="background:' + createColor(grades[i] + 1) + '"></i>' +
             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
     
     }
-        
+       
     return div;
-
 };
 
 
