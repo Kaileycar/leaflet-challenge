@@ -9,9 +9,10 @@ look at earthquakes around the world from the past 7 days.
 
 This assignment is split up into two sections. **Part 1** and **Part 2** *(optional)*. For the first part,    
 use leaflet and pluggins, and create a map showcasing earthqaukes from the past 7 days. Grab the data from the     
-[json](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson) and read it in using the d3 library. The markers for the map should have two parameters. The **size** should reflect the **magnitude** and the **color** should reflect the **depth** of each earthquake.        
-     * The higher the magnitude, the bigger the marker size.    
-     * The deeper the depth, the darker the marker color.   
+[json](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson) and read it in using the d3 library. The markers for the map should have two parameters. The **size** should reflect  
+the **magnitude** and the **color** should reflect the **depth** of each earthquake.          
+    * The higher the magnitude, the bigger the marker size.    
+    * The deeper the depth, the darker the marker color.   
 Along with marker parameters, include a popup for each earthquake with additional information. Lastly, create a legend    
 that will provide the appropriate context for the color markings on the map.   
 
